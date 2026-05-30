@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Playfair_Display, Lora } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+});
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -42,8 +49,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={geist.variable}>
-      <body className="min-h-screen flex flex-col antialiased">
+    <html lang="en" className={`${playfair.variable} ${lora.variable}`}>
+      <body className="min-h-screen flex flex-col">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -30,16 +30,19 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-brand py-16 md:py-20">
+      <section className="bg-brand py-16 md:py-20 border-b-2 border-accent/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl">
-            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-px w-8 bg-accent/40" />
+            <p className="text-accent text-xs font-semibold uppercase tracking-[0.2em]" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
               Contact
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          </div>
+          <div className="max-w-2xl">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
               Get in Touch
             </h1>
-            <p className="text-blue-100 text-lg">
+            <p className="text-white/60 text-lg" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
               Call your nearest clinic directly, or send us a message and
               we&apos;ll get back to you as soon as possible.
             </p>
@@ -48,51 +51,49 @@ export default function ContactPage() {
       </section>
 
       {/* Locations + form */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-parchment">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Locations */}
             <div>
-              <h2 className="text-2xl font-bold text-brand mb-6">
-                Our Locations
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-8 bg-accent/50" />
+                <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-accent" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                  Our Locations
+                </h2>
+              </div>
               <div className="space-y-5">
                 {locations.map((loc) => (
                   <div
                     key={loc.id}
-                    className="bg-gray-50 rounded-xl p-5 border border-gray-100"
+                    className="bg-white border border-accent/20"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-brand">
-                          {loc.suburb}
-                        </h3>
-                        <p className="text-gray-500 text-sm">{loc.clinic}</p>
-                        <p className="text-gray-700 text-sm mt-1">
-                          {loc.address}, {loc.suburb} {loc.state} {loc.postcode}
-                        </p>
+                    <div className="bg-brand px-5 py-3 border-b-2 border-accent/40">
+                      <h3 className="font-semibold text-white" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
+                        {loc.suburb}
+                      </h3>
+                      <p className="text-xs tracking-wider uppercase mt-0.5" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>{loc.clinic}</p>
+                    </div>
+                    <div className="p-5">
+                      <p className="text-brand/60 text-sm mt-1" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                        {loc.address}, {loc.suburb} {loc.state} {loc.postcode}
+                      </p>
+                      <a
+                        href={`tel:${loc.phone.replace(/\s/g, "")}`}
+                        className="text-accent font-medium text-sm hover:underline mt-2 inline-block"
+                      >
+                        {loc.phone}
+                      </a>
+                      <div className="mt-3">
                         <a
-                          href={`tel:${loc.phone.replace(/\s/g, "")}`}
-                          className="text-accent font-medium text-sm hover:underline mt-1 inline-block"
+                          href={loc.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs border border-accent/25 hover:border-accent text-brand/60 hover:text-brand px-3 py-1.5 tracking-wide uppercase"
+                          style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                         >
-                          {loc.phone}
+                          Get Directions →
                         </a>
-                        <div className="mt-3">
-                          <a
-                            href={loc.mapUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs text-gray-500 hover:text-brand border border-gray-200 hover:border-brand px-3 py-1.5 rounded-lg transition-colors"
-                          >
-                            Get Directions →
-                          </a>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -102,20 +103,23 @@ export default function ContactPage() {
 
             {/* Contact form */}
             <div>
-              <h2 className="text-2xl font-bold text-brand mb-6">
-                Send a Message
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-8 bg-accent/50" />
+                <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-accent" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                  Send a Message
+                </h2>
+              </div>
               {submitted ? (
-                <div className="bg-accent-light border border-accent/20 rounded-xl p-8 text-center">
-                  <div className="w-14 h-14 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                    </svg>
+                <div className="bg-white border-2 border-accent/40 p-8 text-center">
+                  <div className="flex items-center justify-center gap-3 mb-5">
+                    <div className="h-px w-10 bg-accent/40" />
+                    <div className="w-1.5 h-1.5 bg-accent rotate-45" />
+                    <div className="h-px w-10 bg-accent/40" />
                   </div>
-                  <h3 className="font-bold text-brand text-xl mb-2">
+                  <h3 className="font-bold text-brand text-xl mb-2" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
                     Message Received
                   </h3>
-                  <p className="text-gray-600">
+                  <p className="text-brand/60" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                     Thanks for getting in touch. We&apos;ll be in contact with you
                     shortly.
                   </p>
@@ -124,7 +128,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      <label className="block text-xs font-medium uppercase tracking-[0.15em] mb-1.5" style={{ color: '#9B7B2E', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                         Full Name <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -134,11 +138,12 @@ export default function ContactPage() {
                         value={form.name}
                         onChange={handleChange}
                         placeholder="Jane Smith"
-                        className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors"
+                        className="w-full border border-accent/25 bg-white px-4 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors text-brand"
+                        style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      <label className="block text-xs font-medium uppercase tracking-[0.15em] mb-1.5" style={{ color: '#9B7B2E', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                         Phone
                       </label>
                       <input
@@ -147,13 +152,14 @@ export default function ContactPage() {
                         value={form.phone}
                         onChange={handleChange}
                         placeholder="04xx xxx xxx"
-                        className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors"
+                        className="w-full border border-accent/25 bg-white px-4 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors text-brand"
+                        style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    <label className="block text-xs font-medium uppercase tracking-[0.15em] mb-1.5" style={{ color: '#9B7B2E', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                       Email <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -163,19 +169,21 @@ export default function ContactPage() {
                       value={form.email}
                       onChange={handleChange}
                       placeholder="jane@example.com"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors"
+                      className="w-full border border-accent/25 bg-white px-4 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors text-brand"
+                      style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    <label className="block text-xs font-medium uppercase tracking-[0.15em] mb-1.5" style={{ color: '#9B7B2E', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                       Preferred Location
                     </label>
                     <select
                       name="location"
                       value={form.location}
                       onChange={handleChange}
-                      className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors bg-white"
+                      className="w-full border border-accent/25 bg-white px-4 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors text-brand"
+                      style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                     >
                       <option value="">Select a location…</option>
                       {locations.map((l) => (
@@ -187,7 +195,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    <label className="block text-xs font-medium uppercase tracking-[0.15em] mb-1.5" style={{ color: '#9B7B2E', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                       Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
@@ -197,18 +205,20 @@ export default function ContactPage() {
                       value={form.message}
                       onChange={handleChange}
                       placeholder="Tell us about your foot concerns or what you'd like to discuss…"
-                      className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors resize-none"
+                      className="w-full border border-accent/25 bg-white px-4 py-2.5 text-sm focus:outline-none focus:border-accent transition-colors resize-none text-brand"
+                      style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-accent hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                    className="w-full border border-accent bg-accent/10 hover:bg-accent text-accent hover:text-white font-semibold px-6 py-3 tracking-widest uppercase text-sm"
+                    style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                   >
                     Send Message
                   </button>
 
-                  <p className="text-xs text-gray-400 text-center">
+                  <p className="text-xs text-brand/40 text-center tracking-wide" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                     For urgent matters, please call your nearest clinic directly.
                   </p>
                 </form>

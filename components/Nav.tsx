@@ -28,29 +28,29 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50">
       {/* Utility bar */}
-      <div className="bg-brand-dark hidden md:block">
+      <div className="bg-brand-dark hidden md:block border-b border-accent/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-9 text-xs text-blue-200">
-            <div className="flex items-center gap-5">
-              <span className="flex items-center gap-1.5">
+          <div className="flex justify-between items-center h-9 text-xs" style={{ color: '#C4A96A' }}>
+            <div className="flex items-center gap-6">
+              <span className="flex items-center gap-1.5 tracking-wide">
                 <svg className="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                 </svg>
                 AHPRA Registered Podiatrist
               </span>
-              <span className="flex items-center gap-1.5">
+              <span className="flex items-center gap-1.5 tracking-wide">
                 <svg className="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                 </svg>
                 Australian Podiatry Association Member
               </span>
             </div>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-6">
               {locations.map((l) => (
                 <a
                   key={l.id}
                   href={`tel:${l.phone.replace(/\s/g, "")}`}
-                  className="flex items-center gap-1.5 hover:text-white"
+                  className="flex items-center gap-1.5 hover:text-white tracking-wide"
                 >
                   <PhoneIcon />
                   {l.suburb}: {l.phone}
@@ -62,45 +62,48 @@ export default function Nav() {
       </div>
 
       {/* Main nav */}
-      <div className="bg-white border-b border-gray-100 shadow-sm">
+      <div className="bg-brand border-b-2 border-accent/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-brand rounded-lg flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <Link href="/" className="flex items-center gap-3">
+              <div className="w-9 h-9 border-2 border-accent/60 flex items-center justify-center shrink-0">
+                <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
                 </svg>
               </div>
               <div>
-                <span className="text-base font-bold text-brand leading-none block">Melville Podiatry</span>
-                <span className="text-xs text-gray-400 leading-none">Perth South</span>
+                <span className="text-base font-bold text-white leading-none block tracking-wide" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>Melville Podiatry</span>
+                <span className="text-xs tracking-widest uppercase" style={{ color: '#C4A96A' }}>Perth South</span>
               </div>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden md:flex items-center gap-7">
               {navLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`text-sm font-medium pb-0.5 transition-colors ${
+                  className={`text-sm tracking-widest uppercase pb-0.5 transition-colors ${
                     pathname === l.href
-                      ? "text-brand border-b-2 border-accent"
-                      : "text-gray-600 hover:text-brand border-b-2 border-transparent"
+                      ? "text-accent border-b border-accent"
+                      : "text-white/80 hover:text-accent border-b border-transparent"
                   }`}
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)', fontSize: '0.7rem' }}
                 >
                   {l.label}
                 </Link>
               ))}
               <a
                 href={`tel:${primaryPhone.replace(/\s/g, "")}`}
-                className="flex items-center gap-1.5 text-sm font-semibold text-brand hover:text-accent"
+                className="flex items-center gap-1.5 text-sm font-medium hover:text-accent"
+                style={{ color: '#C4A96A' }}
               >
                 <PhoneIcon />
                 {primaryPhone}
               </a>
               <Link
                 href="/contact"
-                className="bg-accent hover:bg-teal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-sm"
+                className="border border-accent text-accent hover:bg-accent hover:text-white text-xs font-semibold px-5 py-2 tracking-widest uppercase"
+                style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
               >
                 Contact Us
               </Link>
@@ -110,13 +113,13 @@ export default function Nav() {
             <div className="md:hidden flex items-center gap-3">
               <a
                 href={`tel:${primaryPhone.replace(/\s/g, "")}`}
-                className="flex items-center gap-1 text-sm font-semibold text-brand"
+                className="flex items-center gap-1 text-sm font-semibold text-accent"
                 aria-label={`Call ${primaryPhone}`}
               >
                 <PhoneIcon />
               </a>
               <button
-                className="p-2 text-gray-600 hover:text-brand"
+                className="p-2 text-white/70 hover:text-accent"
                 onClick={() => setOpen(!open)}
                 aria-label="Toggle menu"
                 aria-expanded={open}
@@ -136,23 +139,25 @@ export default function Nav() {
 
           {/* Mobile menu */}
           {open && (
-            <nav className="md:hidden border-t border-gray-100 py-4 flex flex-col gap-1">
+            <nav className="md:hidden border-t border-accent/20 py-4 flex flex-col gap-1 bg-brand">
               {navLinks.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-gray-700 font-medium py-2.5 px-3 rounded-lg hover:bg-gray-50"
+                  className="text-white/80 hover:text-accent font-medium py-2.5 px-3 uppercase tracking-widest text-xs"
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                 >
                   {l.label}
                 </Link>
               ))}
-              <div className="border-t border-gray-100 mt-2 pt-3 space-y-2">
+              <div className="border-t border-accent/20 mt-2 pt-3 space-y-2">
                 {locations.map((l) => (
                   <a
                     key={l.id}
                     href={`tel:${l.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-2 text-sm text-brand font-medium px-3 py-1.5"
+                    className="flex items-center gap-2 text-sm px-3 py-1.5 hover:text-accent"
+                    style={{ color: '#C4A96A' }}
                   >
                     <PhoneIcon />
                     {l.suburb}: {l.phone}
@@ -162,7 +167,7 @@ export default function Nav() {
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}
-                className="bg-accent text-white font-semibold px-4 py-3 rounded-lg text-center mt-2"
+                className="border border-accent text-accent font-semibold px-4 py-3 text-center mt-2 uppercase tracking-widest text-xs"
               >
                 Contact Us
               </Link>

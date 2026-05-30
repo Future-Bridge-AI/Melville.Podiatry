@@ -66,39 +66,18 @@ const whyUs = [
   {
     title: "Three Convenient Locations",
     desc: "Lakelands, Halls Head and Armadale — quality podiatry is always close to home across Perth's south.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-      </svg>
-    ),
   },
   {
     title: "Full Scope of Podiatry",
     desc: "Routine nail care, orthotics, heel pain, diabetic foot care and nail surgery — all under one trusted practitioner.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-      </svg>
-    ),
   },
   {
     title: "Personal, Attentive Care",
     desc: "As an independent practitioner, Douglas takes time to understand your situation and build a plan that works for you.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-      </svg>
-    ),
   },
   {
     title: "No Referral Needed",
     desc: "You can contact Douglas directly without a GP referral. Simply call your nearest clinic or send an enquiry to get started.",
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-      </svg>
-    ),
   },
 ];
 
@@ -107,7 +86,7 @@ function Stars({ count = 5 }: { count?: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+        <svg key={i} className="w-4 h-4" fill="#9B7B2E" viewBox="0 0 20 20">
           <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
         </svg>
       ))}
@@ -115,12 +94,23 @@ function Stars({ count = 5 }: { count?: number }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function OrnamentRule({ light = false }: { light?: boolean }) {
+  const col = light ? 'rgba(155,123,46,0.35)' : 'rgba(155,123,46,0.5)';
+  return (
+    <div className="flex items-center gap-3 my-6">
+      <div className="h-px flex-1" style={{ background: col }} />
+      <div className="w-1.5 h-1.5 rotate-45" style={{ background: col }} />
+      <div className="h-px flex-1" style={{ background: col }} />
+    </div>
+  );
+}
+
+function SectionLabel({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
     <div className="flex items-center justify-center gap-3 mb-4">
-      <span className="h-px w-8 bg-accent" />
-      <span className="text-accent text-sm font-semibold uppercase tracking-widest">{children}</span>
-      <span className="h-px w-8 bg-accent" />
+      <div className="h-px w-8" style={{ background: dark ? '#9B7B2E' : '#9B7B2E', opacity: 0.6 }} />
+      <span className="text-xs font-semibold uppercase tracking-[0.2em]" style={{ color: '#9B7B2E', fontFamily: 'var(--font-lora, Georgia, serif)' }}>{children}</span>
+      <div className="h-px w-8" style={{ background: '#9B7B2E', opacity: 0.6 }} />
     </div>
   );
 }
@@ -131,58 +121,61 @@ export default function Home() {
     <>
       {/* ── Hero ───────────────────────────────────────────── */}
       <section className="bg-brand relative overflow-hidden">
-        {/* Subtle dot-grid texture */}
+        {/* Subtle linen texture overlay */}
         <div
-          className="absolute inset-0 opacity-[0.07]"
+          className="absolute inset-0 opacity-[0.04]"
           style={{
-            backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
+            backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 3px), repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,1) 2px, rgba(255,255,255,1) 3px)",
           }}
         />
-        {/* Teal glow */}
-        <div
-          className="absolute top-0 right-0 w-2/3 h-full opacity-10 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse at 80% 40%, #0d9488 0%, transparent 65%)",
-          }}
+        {/* Gold corner ornament top-right */}
+        <div className="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at top right, #9B7B2E 0%, transparent 70%)' }}
         />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+          {/* Double-rule border top */}
+          <div className="flex items-center gap-3 mb-10">
+            <div className="h-px flex-1 bg-accent/30" />
+            <div className="w-1 h-1 bg-accent/50 rotate-45" />
+            <div className="h-px flex-1 bg-accent/30" />
+          </div>
+
           <div className="grid md:grid-cols-5 gap-10 items-center">
             {/* Left: copy */}
             <div className="md:col-span-3">
-              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-blue-100 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
-                <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+              <div className="inline-flex items-center gap-2 border border-accent/30 text-xs px-3 py-1.5 mb-6 tracking-widest uppercase" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                 Perth South · Lakelands · Halls Head · Armadale
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.15] mb-5">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.2] mb-5" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
                 Expert Foot Care,{" "}
-                <span className="text-accent">Closer to Home</span>
+                <span className="text-accent italic">Closer to Home</span>
               </h1>
-              <p className="text-blue-100 text-lg leading-relaxed mb-7 max-w-xl">
+              <p className="text-white/70 text-lg leading-relaxed mb-7 max-w-xl" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                 Douglas Veitch is an AHPRA-registered podiatrist providing
                 comprehensive foot and lower limb care at three convenient Perth
                 South locations.
               </p>
 
-              {/* Star social proof */}
               <div className="flex items-center gap-3 mb-8">
                 <Stars />
-                <span className="text-blue-100 text-sm">
+                <span className="text-white/60 text-sm tracking-wide" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                   Highly recommended · Patient-centred care
                 </span>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="bg-accent hover:bg-teal-600 text-white font-semibold px-7 py-3.5 rounded-lg text-center shadow-lg shadow-teal-900/30"
+                  className="border border-accent bg-accent/10 hover:bg-accent text-accent hover:text-white font-semibold px-8 py-3.5 text-center tracking-widest uppercase text-sm"
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                 >
                   Book an Appointment
                 </Link>
                 <Link
                   href="/services"
-                  className="border-2 border-white/30 hover:border-white/60 text-white font-semibold px-7 py-3.5 rounded-lg text-center"
+                  className="border border-white/30 hover:border-white/60 text-white font-semibold px-8 py-3.5 text-center tracking-widest uppercase text-sm"
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                 >
                   Our Services
                 </Link>
@@ -194,7 +187,8 @@ export default function Home() {
                   <Link
                     key={s.slug}
                     href={`/services/${s.slug}`}
-                    className="text-xs bg-white/10 hover:bg-white/20 border border-white/15 text-blue-100 hover:text-white px-3 py-1.5 rounded-full"
+                    className="text-xs border border-white/15 hover:border-accent/50 text-white/60 hover:text-accent px-3 py-1.5 tracking-wide"
+                    style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                   >
                     {s.title}
                   </Link>
@@ -204,35 +198,43 @@ export default function Home() {
 
             {/* Right: credential card */}
             <div className="md:col-span-2 hidden md:block">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 shadow-2xl">
-                {/* Photo placeholder */}
-                <div className="bg-brand-dark/60 rounded-xl aspect-[4/3] flex items-center justify-center mb-5">
-                  <div className="text-center text-blue-300">
-                    <svg className="w-14 h-14 mx-auto mb-2 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                    </svg>
-                    <p className="text-xs opacity-50">Photo of Douglas</p>
+              <div className="border-2 border-accent/30 p-6 shadow-2xl bg-brand-dark/80">
+                {/* Ornamental card header */}
+                <div className="border-b border-accent/20 pb-4 mb-5 text-center">
+                  <p className="text-accent text-xs tracking-[0.2em] uppercase mb-1" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                    Your Practitioner
+                  </p>
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="h-px w-8 bg-accent/30" />
+                    <div className="w-1 h-1 bg-accent/50 rotate-45" />
+                    <div className="h-px w-8 bg-accent/30" />
                   </div>
                 </div>
 
-                <div className="mb-5">
-                  <p className="text-white font-semibold text-lg leading-tight">Douglas Veitch</p>
-                  <p className="text-blue-200 text-sm">Registered Podiatrist (General)</p>
+                {/* Photo placeholder */}
+                <div className="bg-brand/60 border border-white/10 aspect-[4/3] flex items-center justify-center mb-5">
+                  <div className="text-center" style={{ color: '#C4A96A' }}>
+                    <svg className="w-14 h-14 mx-auto mb-2 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                    </svg>
+                    <p className="text-xs opacity-40 tracking-wide" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>Photo of Douglas</p>
+                  </div>
                 </div>
 
-                <ul className="space-y-2.5 mb-5">
+                <div className="mb-5 text-center">
+                  <p className="text-white font-semibold text-lg leading-tight" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>Douglas Veitch</p>
+                  <p className="text-xs tracking-widest uppercase mt-1" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>Registered Podiatrist (General)</p>
+                </div>
+
+                <ul className="space-y-2.5 mb-5 border-t border-accent/20 pt-4">
                   {[
                     "AHPRA Registered",
                     "APA Member",
                     "3 Clinic Locations",
                     "No Referral Needed",
                   ].map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-sm text-blue-100">
-                      <span className="w-5 h-5 bg-accent/30 rounded-full flex items-center justify-center shrink-0">
-                        <svg className="w-3 h-3 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
-                      </span>
+                    <li key={item} className="flex items-center gap-2.5 text-sm" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                      <span className="w-4 h-px bg-accent/50 shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -240,47 +242,38 @@ export default function Home() {
 
                 <Link
                   href="/contact"
-                  className="block w-full bg-accent hover:bg-teal-600 text-white font-semibold py-2.5 rounded-lg text-center text-sm"
+                  className="block w-full border border-accent text-accent hover:bg-accent hover:text-white font-semibold py-2.5 text-center text-xs tracking-widest uppercase"
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                 >
-                  Book Online
+                  Get in Touch
                 </Link>
               </div>
             </div>
+          </div>
+
+          {/* Double-rule border bottom */}
+          <div className="flex items-center gap-3 mt-10">
+            <div className="h-px flex-1 bg-accent/30" />
+            <div className="w-1 h-1 bg-accent/50 rotate-45" />
+            <div className="h-px flex-1 bg-accent/30" />
           </div>
         </div>
       </section>
 
       {/* ── Trust bar ──────────────────────────────────────── */}
-      <section className="bg-brand-dark border-b border-white/10">
+      <section className="bg-brand-dark border-b-2 border-accent/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-accent/15">
             {[
-              {
-                icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>,
-                value: "3 Clinics",
-                label: "Perth South",
-              },
-              {
-                icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" /></svg>,
-                value: "All Ages",
-                label: "Patients Welcome",
-              },
-              {
-                icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>,
-                value: "No Referral",
-                label: "Required",
-              },
-              {
-                icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>,
-                value: "AHPRA",
-                label: "Registered & Insured",
-              },
+              { value: "3 Clinics", label: "Perth South" },
+              { value: "All Ages", label: "Patients Welcome" },
+              { value: "No Referral", label: "Required" },
+              { value: "AHPRA", label: "Registered & Insured" },
             ].map((s) => (
               <div key={s.label} className="flex items-center gap-3 px-6 py-3 first:pl-0 last:pr-0">
-                <span className="text-accent hidden sm:block">{s.icon}</span>
                 <div>
-                  <div className="text-white font-semibold text-sm">{s.value}</div>
-                  <div className="text-blue-300 text-xs">{s.label}</div>
+                  <div className="text-white font-semibold text-sm" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>{s.value}</div>
+                  <div className="text-xs tracking-wide" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>{s.label}</div>
                 </div>
               </div>
             ))}
@@ -289,14 +282,14 @@ export default function Home() {
       </section>
 
       {/* ── Services ───────────────────────────────────────── */}
-      <section className="bg-warm py-20">
+      <section className="bg-parchment py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>What We Treat</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand mb-3" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
               Our Services
             </h2>
-            <p className="text-gray-500 max-w-lg mx-auto">
+            <p className="text-brand/60 max-w-lg mx-auto" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
               Comprehensive care from everyday foot maintenance to complex lower
               limb conditions — all from a single trusted practitioner.
             </p>
@@ -307,24 +300,21 @@ export default function Home() {
               <Link
                 key={s.slug}
                 href={`/services/${s.slug}`}
-                className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 group overflow-hidden"
+                className="bg-white border border-accent/20 shadow-sm hover:shadow-md hover:border-accent/50 group overflow-hidden"
               >
-                <div className="h-1 bg-gray-100 group-hover:bg-accent transition-colors" />
+                <div className="h-0.5 bg-accent/20 group-hover:bg-accent transition-colors" />
                 <div className="p-6">
-                  <div className="w-11 h-11 bg-accent-light rounded-xl flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
+                  <div className="w-11 h-11 border border-accent/30 flex items-center justify-center text-accent mb-4 group-hover:bg-accent group-hover:text-white transition-colors">
                     {serviceIcons[s.icon]}
                   </div>
-                  <h3 className="text-base font-semibold text-brand mb-2 group-hover:text-accent transition-colors">
+                  <h3 className="text-base font-semibold text-brand mb-2 group-hover:text-accent transition-colors" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
                     {s.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  <p className="text-brand/60 text-sm leading-relaxed mb-4" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                     {s.shortDesc}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-accent text-sm font-medium">
-                    Learn more
-                    <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
+                  <span className="inline-flex items-center gap-1 text-accent text-xs font-medium tracking-widest uppercase" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                    Learn more →
                   </span>
                 </div>
               </Link>
@@ -334,28 +324,29 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials ───────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Overall rating bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12 p-6 border border-accent/25 bg-white">
             <div className="text-center sm:text-left">
-              <div className="text-4xl font-bold text-brand">5.0</div>
+              <div className="text-4xl font-bold text-brand" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>5.0</div>
               <Stars />
-              <p className="text-xs text-gray-500 mt-1">Overall rating</p>
+              <p className="text-xs text-brand/50 mt-1 tracking-wide" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>Overall rating</p>
             </div>
-            <div className="hidden sm:block h-12 w-px bg-gray-200" />
+            <div className="hidden sm:block h-12 w-px bg-accent/20" />
             <div>
-              <p className="text-gray-700 font-medium">Highly Recommended</p>
-              <p className="text-gray-500 text-sm">
+              <p className="text-brand font-semibold" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>Highly Recommended</p>
+              <p className="text-brand/60 text-sm" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                 Based on patient reviews across all locations
               </p>
             </div>
-            <div className="hidden sm:block h-12 w-px bg-gray-200" />
+            <div className="hidden sm:block h-12 w-px bg-accent/20" />
             <div className="flex gap-2">
               {["AHPRA", "APA"].map((b) => (
                 <span
                   key={b}
-                  className="bg-brand text-white text-xs font-bold px-3 py-1.5 rounded-lg"
+                  className="border border-accent/40 text-accent text-xs font-bold px-3 py-1.5 tracking-wider"
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                 >
                   {b}
                 </span>
@@ -365,7 +356,7 @@ export default function Home() {
 
           <div className="text-center mb-10">
             <SectionLabel>Patient Reviews</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand mb-3" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
               What Our Patients Say
             </h2>
           </div>
@@ -374,19 +365,19 @@ export default function Home() {
             {testimonials.map((t) => (
               <div
                 key={t.name}
-                className="bg-gray-50 rounded-xl p-6 border border-gray-100 flex flex-col"
+                className="bg-white p-6 border border-accent/20 flex flex-col"
               >
                 <Stars />
-                <blockquote className="text-gray-700 text-sm leading-relaxed mt-4 mb-6 flex-1">
+                <blockquote className="text-brand/70 text-sm leading-relaxed mt-4 mb-6 flex-1 italic" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-brand rounded-full flex items-center justify-center text-white text-xs font-bold shrink-0">
+                <div className="border-t border-accent/15 pt-4 flex items-center gap-3">
+                  <div className="w-9 h-9 border-2 border-accent/40 flex items-center justify-center text-accent text-xs font-bold shrink-0" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
                     {t.initials}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-brand">{t.name}</p>
-                    <p className="text-xs text-gray-500">{t.suburb}</p>
+                    <p className="text-sm font-semibold text-brand" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>{t.name}</p>
+                    <p className="text-xs text-brand/50 tracking-wide" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>{t.suburb}</p>
                   </div>
                 </div>
               </div>
@@ -396,39 +387,39 @@ export default function Home() {
       </section>
 
       {/* ── Why Choose ─────────────────────────────────────── */}
-      <section className="py-20 bg-warm">
+      <section className="py-20 bg-parchment">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <SectionLabel>Why Douglas?</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand mb-4" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
                 Why Choose Melville Podiatry?
               </h2>
-              <p className="text-gray-500 mb-8">
+              <p className="text-brand/60 mb-8" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                 Whether you&apos;re managing a chronic condition, recovering from an
                 injury, or just need routine care, Douglas provides attentive,
                 professional podiatry you can count on.
               </p>
               <div className="space-y-4">
                 {whyUs.map((item) => (
-                  <div key={item.title} className="flex gap-4 p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
-                    <div className="w-10 h-10 bg-accent-light rounded-lg flex items-center justify-center text-accent shrink-0">
-                      {item.icon}
-                    </div>
+                  <div key={item.title} className="flex gap-4 p-4 bg-white border border-accent/20">
+                    <div className="w-1 shrink-0 bg-accent/50" />
                     <div>
-                      <h3 className="font-semibold text-brand text-sm mb-0.5">{item.title}</h3>
-                      <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                      <h3 className="font-semibold text-brand text-sm mb-0.5" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>{item.title}</h3>
+                      <p className="text-brand/60 text-sm leading-relaxed" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Stats card — replaces photo placeholder */}
-            <div className="bg-brand rounded-2xl p-8 text-white">
-              <p className="text-blue-200 text-sm font-medium uppercase tracking-widest mb-6">
-                Practice at a Glance
-              </p>
+            {/* Stats panel */}
+            <div className="bg-brand border-2 border-accent/40 p-8 text-white">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px flex-1 bg-accent/30" />
+                <p className="text-accent text-xs tracking-[0.2em] uppercase" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>Practice at a Glance</p>
+                <div className="h-px flex-1 bg-accent/30" />
+              </div>
               <div className="grid grid-cols-2 gap-5 mb-8">
                 {[
                   { value: "3", label: "Clinic Locations" },
@@ -436,21 +427,18 @@ export default function Home() {
                   { value: "All Ages", label: "Patients Welcome" },
                   { value: "6", label: "Services Offered" },
                 ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="bg-white/10 rounded-xl p-4 border border-white/10"
-                  >
-                    <div className="text-2xl font-bold text-white mb-0.5">{s.value}</div>
-                    <div className="text-blue-200 text-xs">{s.label}</div>
+                  <div key={s.label} className="border border-accent/25 p-4">
+                    <div className="text-2xl font-bold text-white mb-0.5" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>{s.value}</div>
+                    <div className="text-xs tracking-wide" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>{s.label}</div>
                   </div>
                 ))}
               </div>
-              <div className="border-t border-white/20 pt-6">
-                <p className="text-blue-100 text-sm italic leading-relaxed mb-4">
+              <div className="border-t border-accent/25 pt-6">
+                <p className="text-white/70 text-sm italic leading-relaxed mb-4" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                   &ldquo;Bringing professional podiatry care closer to Perth&apos;s
                   southern communities.&rdquo;
                 </p>
-                <p className="text-blue-200 text-xs">— Douglas Veitch, Podiatrist</p>
+                <p className="text-xs tracking-widest" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>— Douglas Veitch, Podiatrist</p>
               </div>
             </div>
           </div>
@@ -458,15 +446,15 @@ export default function Home() {
       </section>
 
       {/* ── Locations ──────────────────────────────────────── */}
-      <section id="locations" className="py-20 bg-white">
+      <section id="locations" className="py-20 bg-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <SectionLabel>Find Us</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand mb-3">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand mb-3" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
               Three Locations Across Perth South
             </h2>
-            <p className="text-gray-500 max-w-lg mx-auto">
-              Find the clinic closest to you and book an appointment online.
+            <p className="text-brand/60 max-w-lg mx-auto" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+              Find the clinic closest to you and get in touch to arrange an appointment.
             </p>
           </div>
 
@@ -474,32 +462,21 @@ export default function Home() {
             {locations.map((loc) => (
               <div
                 key={loc.id}
-                className="rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                className="border border-accent/25 overflow-hidden hover:border-accent/50 transition-colors bg-white"
               >
                 {/* Header band */}
-                <div className="bg-brand px-6 py-4 flex items-center gap-3">
-                  <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-white font-semibold">{loc.suburb}</h3>
-                    <p className="text-blue-200 text-xs">{loc.clinic}</p>
-                  </div>
+                <div className="bg-brand px-6 py-4 border-b-2 border-accent/40">
+                  <h3 className="text-white font-semibold" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>{loc.suburb}</h3>
+                  <p className="text-xs tracking-wider uppercase mt-0.5" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>{loc.clinic}</p>
                 </div>
-                <div className="bg-white p-5">
-                  <p className="text-gray-600 text-sm mb-1">
+                <div className="p-5">
+                  <p className="text-brand/60 text-sm mb-1" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                     {loc.address}, {loc.suburb} {loc.state} {loc.postcode}
                   </p>
                   <a
                     href={`tel:${loc.phone.replace(/\s/g, "")}`}
                     className="inline-flex items-center gap-1.5 text-accent font-semibold text-sm hover:underline mt-1"
                   >
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-                    </svg>
                     {loc.phone}
                   </a>
                   <div className="mt-4 flex gap-2">
@@ -507,15 +484,17 @@ export default function Home() {
                       href={loc.mapUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 text-center text-xs border border-gray-200 hover:border-brand text-gray-600 hover:text-brand px-3 py-2 rounded-lg"
+                      className="flex-1 text-center text-xs border border-accent/25 hover:border-accent text-brand/60 hover:text-brand px-3 py-2 tracking-wide uppercase"
+                      style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                     >
-                      Get Directions
+                      Directions
                     </a>
                     <Link
                       href="/contact"
-                      className="flex-1 text-center text-xs bg-accent hover:bg-teal-700 text-white px-3 py-2 rounded-lg font-medium"
+                      className="flex-1 text-center text-xs bg-accent hover:bg-gold-dark text-white px-3 py-2 font-medium tracking-wide uppercase"
+                      style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                     >
-                      Book Here
+                      Enquire
                     </Link>
                   </div>
                 </div>
@@ -526,18 +505,22 @@ export default function Home() {
       </section>
 
       {/* ── About teaser ───────────────────────────────────── */}
-      <section className="py-20 bg-warm">
+      <section className="py-20 bg-parchment">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand rounded-2xl overflow-hidden shadow-xl">
+          <div className="bg-brand border-2 border-accent/40 overflow-hidden shadow-xl">
             <div className="grid md:grid-cols-5">
               <div className="md:col-span-3 p-10 md:p-14">
-                <span className="inline-block bg-accent/20 text-accent text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-5">
-                  Your Podiatrist
-                </span>
-                <h2 className="text-3xl font-bold text-white mb-4">
+                {/* Ornamental label */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="h-px w-8 bg-accent/40" />
+                  <span className="text-accent text-xs font-semibold uppercase tracking-[0.2em]" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+                    Your Podiatrist
+                  </span>
+                </div>
+                <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
                   Meet Douglas Veitch
                 </h2>
-                <p className="text-blue-100 leading-relaxed mb-6">
+                <p className="text-white/70 leading-relaxed mb-6" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                   Douglas is an AHPRA-registered general podiatrist with a
                   commitment to providing attentive, patient-centred care across
                   Perth&apos;s southern suburbs. He brings experience across the full
@@ -547,27 +530,25 @@ export default function Home() {
                 </p>
                 <div className="flex flex-wrap gap-2 mb-7">
                   {["AHPRA Registered", "APA Member", "General Podiatry"].map((b) => (
-                    <span key={b} className="bg-white/15 text-blue-100 text-xs px-3 py-1 rounded-full border border-white/20">
+                    <span key={b} className="border border-accent/30 text-xs px-3 py-1 tracking-wider" style={{ color: '#C4A96A', fontFamily: 'var(--font-lora, Georgia, serif)' }}>
                       {b}
                     </span>
                   ))}
                 </div>
                 <Link
                   href="/about"
-                  className="inline-flex items-center gap-2 bg-white text-brand font-semibold px-6 py-3 rounded-lg hover:bg-blue-50"
+                  className="inline-flex items-center gap-2 border border-white/40 hover:border-white text-white font-semibold px-6 py-3 text-sm tracking-widest uppercase"
+                  style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
                 >
-                  About Douglas
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
+                  About Douglas →
                 </Link>
               </div>
-              <div className="md:col-span-2 bg-brand-dark flex items-center justify-center min-h-48 md:min-h-0">
-                <div className="text-center text-blue-400 p-8">
-                  <svg className="w-20 h-20 mx-auto mb-3 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="md:col-span-2 bg-brand-dark border-l border-accent/20 flex items-center justify-center min-h-48 md:min-h-0">
+                <div className="text-center p-8" style={{ color: '#C4A96A' }}>
+                  <svg className="w-20 h-20 mx-auto mb-3 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                   </svg>
-                  <p className="text-sm opacity-40">Douglas&apos;s photo</p>
+                  <p className="text-xs opacity-30 tracking-widest uppercase" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>Douglas&apos;s photo</p>
                 </div>
               </div>
             </div>
@@ -576,25 +557,33 @@ export default function Home() {
       </section>
 
       {/* ── Final CTA ──────────────────────────────────────── */}
-      <section className="py-16 bg-accent">
+      <section className="py-16 bg-brand border-t-2 border-accent/40">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-3">
+          {/* Ornamental top */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="h-px w-12 bg-accent/40" />
+            <div className="w-1.5 h-1.5 bg-accent/60 rotate-45" />
+            <div className="h-px w-12 bg-accent/40" />
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-playfair, Georgia, serif)' }}>
             Ready to Take the First Step?
           </h2>
-          <p className="text-teal-50 text-lg mb-8">
-            Book an appointment online at your preferred location — Lakelands,
-            Halls Head, or Armadale.
+          <p className="text-white/60 text-lg mb-8" style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}>
+            Appointments available at Lakelands, Halls Head, and Armadale.
+            Call your nearest clinic or send an enquiry.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="bg-white text-accent font-semibold px-8 py-3.5 rounded-lg hover:bg-teal-50 shadow-lg"
+              className="border border-accent bg-accent/10 hover:bg-accent text-accent hover:text-white font-semibold px-8 py-3.5 tracking-widest uppercase text-sm"
+              style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
             >
-              Book Online Now
+              Get in Touch
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-white/50 hover:border-white text-white font-semibold px-8 py-3.5 rounded-lg"
+              className="border border-white/30 hover:border-white text-white font-semibold px-8 py-3.5 tracking-widest uppercase text-sm"
+              style={{ fontFamily: 'var(--font-lora, Georgia, serif)' }}
             >
               Contact Us
             </Link>

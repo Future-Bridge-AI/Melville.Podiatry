@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #1b3d6f;
-  --color-brand-dark: #122a4e;
-  --color-accent: #0d9488;
-  --color-accent-light: #f0fdfa;
-  --color-warm: #fafbfc;
+  --color-brand: #1B2840;
+  --color-brand-dark: #0F1A2E;
+  --color-accent: #9B7B2E;
+  --color-accent-light: #FDF5E4;
+  --color-warm: #F5EDD9;
+  --color-parchment: #FAF3E0;
+  --color-gold-dark: #7A5F1E;
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-lora);
+  --font-heading: var(--font-playfair);
+  --font-mono: monospace;
 }
 
 html {
@@ -18,22 +21,40 @@ html {
 }
 
 body {
-  color: #1f2937;
-  font-family: var(--font-sans, Arial, Helvetica, sans-serif);
+  color: #2C2415;
+  font-family: var(--font-sans, Georgia, serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FAF3E0;
 }
 
-/* Consistent interactive transition */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading, Georgia, serif);
+}
+
 a, button {
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
-/* Accessible focus ring */
 :focus-visible {
-  outline: 2px solid #0d9488;
+  outline: 2px solid #9B7B2E;
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 0;
+}
+
+/* Ornamental rule used throughout */
+.ornament-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ornament-rule::before,
+.ornament-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.3;
 }
