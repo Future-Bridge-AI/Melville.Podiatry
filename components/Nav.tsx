@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BOOKING_URL } from "@/lib/config";
 import { locations } from "@/lib/locations";
 
 const navLinks = [
@@ -100,10 +99,10 @@ export default function Nav() {
                 {primaryPhone}
               </a>
               <Link
-                href={BOOKING_URL}
+                href="/contact"
                 className="bg-accent hover:bg-teal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg shadow-sm"
               >
-                Book Now
+                Contact Us
               </Link>
             </nav>
 
@@ -161,11 +160,11 @@ export default function Nav() {
                 ))}
               </div>
               <Link
-                href={BOOKING_URL}
+                href="/contact"
                 onClick={() => setOpen(false)}
                 className="bg-accent text-white font-semibold px-4 py-3 rounded-lg text-center mt-2"
               >
-                Book an Appointment
+                Contact Us
               </Link>
             </nav>
           )}

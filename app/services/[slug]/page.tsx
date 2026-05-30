@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { services } from "@/lib/services";
-import { BOOKING_URL } from "@/lib/config";
 
 export async function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
@@ -89,20 +88,14 @@ export default async function ServicePage({
               {/* Book CTA */}
               <div className="bg-brand rounded-xl p-6 text-white">
                 <h3 className="font-semibold text-lg mb-2">
-                  Book an Appointment
+                  Make an Enquiry
                 </h3>
                 <p className="text-blue-100 text-sm mb-4">
-                  Available at Lakelands, Halls Head and Armadale.
+                  Available at Lakelands, Halls Head and Armadale. Call your nearest clinic or send a message.
                 </p>
                 <Link
-                  href={BOOKING_URL}
-                  className="block bg-blue-500 hover:bg-blue-400 text-white font-semibold px-5 py-2.5 rounded-lg text-center transition-colors"
-                >
-                  Book Online
-                </Link>
-                <Link
                   href="/contact"
-                  className="block border border-white/30 hover:border-white text-white text-sm font-medium px-5 py-2.5 rounded-lg text-center mt-2 transition-colors"
+                  className="block bg-white text-brand font-semibold px-5 py-2.5 rounded-lg text-center hover:bg-blue-50 transition-colors"
                 >
                   Contact Us
                 </Link>

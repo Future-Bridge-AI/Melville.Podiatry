@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { locations } from "@/lib/locations";
-import { BOOKING_URL } from "@/lib/config";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
@@ -42,32 +40,12 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="text-blue-100 text-lg">
-              Book online, call your nearest clinic, or send us a message and
-              we&apos;ll get back to you.
+              Call your nearest clinic directly, or send us a message and
+              we&apos;ll get back to you as soon as possible.
             </p>
           </div>
         </div>
       </section>
-
-      {/* Book online CTA */}
-      <div className="bg-accent" id="book">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <p className="text-white font-semibold">Prefer to book online?</p>
-              <p className="text-green-100 text-sm">
-                Select your preferred location and choose a time that suits you.
-              </p>
-            </div>
-            <Link
-              href={BOOKING_URL}
-              className="bg-white text-accent font-semibold px-6 py-2.5 rounded-lg hover:bg-green-50 transition-colors shrink-0"
-            >
-              Book Online Now →
-            </Link>
-          </div>
-        </div>
-      </div>
 
       {/* Locations + form */}
       <section className="py-20 bg-white">
@@ -86,7 +64,7 @@ export default function ContactPage() {
                   >
                     <div className="flex items-start gap-4">
                       <div className="w-9 h-9 bg-brand rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                        <svg className="w-4.5 h-4.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                         </svg>
@@ -218,14 +196,14 @@ export default function ContactPage() {
                       rows={4}
                       value={form.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your foot concerns or what you'd like to book…"
+                      placeholder="Tell us about your foot concerns or what you'd like to discuss…"
                       className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand/20 focus:border-brand transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                    className="w-full bg-accent hover:bg-teal-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
                   >
                     Send Message
                   </button>

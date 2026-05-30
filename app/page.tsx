@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { locations } from "@/lib/locations";
-import { BOOKING_URL } from "@/lib/config";
 
 /* ─── Icons ────────────────────────────────────────────────── */
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -93,11 +92,11 @@ const whyUs = [
     ),
   },
   {
-    title: "Easy Online Booking",
-    desc: "Book an appointment at your preferred location online — no phone tag, available any time of day.",
+    title: "No Referral Needed",
+    desc: "You can contact Douglas directly without a GP referral. Simply call your nearest clinic or send an enquiry to get started.",
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
       </svg>
     ),
   },
@@ -176,7 +175,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href={BOOKING_URL}
+                  href="/contact"
                   className="bg-accent hover:bg-teal-600 text-white font-semibold px-7 py-3.5 rounded-lg text-center shadow-lg shadow-teal-900/30"
                 >
                   Book an Appointment
@@ -226,7 +225,7 @@ export default function Home() {
                     "AHPRA Registered",
                     "APA Member",
                     "3 Clinic Locations",
-                    "Online Booking Available",
+                    "No Referral Needed",
                   ].map((item) => (
                     <li key={item} className="flex items-center gap-2.5 text-sm text-blue-100">
                       <span className="w-5 h-5 bg-accent/30 rounded-full flex items-center justify-center shrink-0">
@@ -240,7 +239,7 @@ export default function Home() {
                 </ul>
 
                 <Link
-                  href={BOOKING_URL}
+                  href="/contact"
                   className="block w-full bg-accent hover:bg-teal-600 text-white font-semibold py-2.5 rounded-lg text-center text-sm"
                 >
                   Book Online
@@ -268,8 +267,8 @@ export default function Home() {
               },
               {
                 icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" /></svg>,
-                value: "Online Booking",
-                label: "Available Now",
+                value: "No Referral",
+                label: "Required",
               },
               {
                 icon: <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>,
@@ -513,7 +512,7 @@ export default function Home() {
                       Get Directions
                     </a>
                     <Link
-                      href={BOOKING_URL}
+                      href="/contact"
                       className="flex-1 text-center text-xs bg-accent hover:bg-teal-700 text-white px-3 py-2 rounded-lg font-medium"
                     >
                       Book Here
@@ -588,7 +587,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href={BOOKING_URL}
+              href="/contact"
               className="bg-white text-accent font-semibold px-8 py-3.5 rounded-lg hover:bg-teal-50 shadow-lg"
             >
               Book Online Now

@@ -69,7 +69,7 @@ export default function Footer() {
                 { href: '/about', label: 'About Douglas' },
                 { href: '/services', label: 'All Services' },
                 { href: '/contact', label: 'Contact Us' },
-                { href: '/contact#book', label: 'Book Appointment' },
+                { href: '/contact', label: 'Get in Touch' },
               ].map((l) => (
                 <li key={l.href}>
                   <Link

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { services } from "@/lib/services";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -73,14 +72,13 @@ export default function ServicesPage() {
             Not Sure Which Service You Need?
           </h2>
           <p className="text-blue-100 mb-6">
-            Book a general consultation and Douglas will assess your feet and
-            recommend the right treatment plan.
+            Give us a call or send an enquiry — Douglas will assess your feet and recommend the right treatment plan.
           </p>
           <Link
-            href={BOOKING_URL}
-            className="inline-block bg-blue-500 hover:bg-blue-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-colors"
+            href="/contact"
+            className="inline-block bg-white text-brand font-semibold px-8 py-3.5 rounded-lg hover:bg-blue-50 transition-colors"
           >
-            Book a Consultation
+            Get in Touch
           </Link>
         </div>
       </section>

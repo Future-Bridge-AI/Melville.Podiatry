@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BOOKING_URL } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "About Douglas Veitch",
@@ -145,16 +144,16 @@ export default function AboutPage() {
       <section className="py-16 bg-brand">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">
-            Ready to Book with Douglas?
+            Get in Touch with Douglas
           </h2>
           <p className="text-blue-100 mb-6">
-            Appointments available at Lakelands, Halls Head, and Armadale.
+            Appointments available at Lakelands, Halls Head, and Armadale. Call your nearest clinic or send an enquiry.
           </p>
           <Link
-            href={BOOKING_URL}
-            className="inline-block bg-blue-500 hover:bg-blue-400 text-white font-semibold px-8 py-3.5 rounded-lg transition-colors"
+            href="/contact"
+            className="inline-block bg-white text-brand font-semibold px-8 py-3.5 rounded-lg hover:bg-blue-50 transition-colors"
           >
-            Book an Appointment
+            Contact Us
           </Link>
         </div>
       </section>
